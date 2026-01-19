@@ -1,0 +1,13 @@
+[
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "Print Master Template",
+  "enabled": 1,
+  "modified": "2026-01-18 20:08:07.200392",
+  "module": "Print Master",
+  "name": "Print Master Template",
+  "script": "frappe.ui.form.on('Print Master Template', {\n    refresh: function(frm) {\n        frm.trigger('render_preview');\n    },\n    render_preview: function(frm) {\n        // Solo ejecutamos si el documento ya tiene nombre (ya fue guardado)\n        if (frm.doc.name) {\n            frappe.call({\n                method: \"print_master.print_master.doctype.print_master_template.print_master_template.get_template_preview\",\n                args: {\n                    template_name: frm.doc.name\n                },\n                callback: function(r) {\n                    if (r.message) {\n                        // Buscamos el contenedor del campo HTML y metemos el código\n                        // Reemplaza 'preview' por el nombre REAL de tu campo HTML\n                        let container = frm.get_field('preview').$wrapper;\n                        container.html(r.message);\n                    }\n                }\n            });\n        }\n    }\n});",
+  "view": "Form"
+ }
+]

@@ -230,7 +230,12 @@ app_license = "mit"
 # 		"doctype": "{doctype_4}"
 # 	}
 # ]
-
+fixtures = [
+    {
+        "dt": "Client Script",
+        "filters": [["module", "=", "Print Master"]]
+    }
+]
 # Authentication and authorization
 # --------------------------------
 
