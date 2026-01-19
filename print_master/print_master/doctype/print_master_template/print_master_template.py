@@ -88,9 +88,7 @@ def get_template_preview(template_name, doc=None, config=None):
     if doc_template.template_path:
         with open(doc_template.template_path, "r") as f:
             source_html = f.read()
-            
         # Obtenemos el contexto (is_a_template=True para usar data de ejemplo)
-        context = get_context(is_a_template=True, config=config_dict)
-        context.update(frappe.utils.get_jinja_helper())
+        context = get_context(is_a_template=True, doc=doc, config=config_dict)
         
         return frappe.render_template(source_html, context)

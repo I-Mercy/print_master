@@ -19,7 +19,6 @@ frappe.ui.form.on("Print Master Template", {
             callback: function(r) {
                 if (r.message) {
                     // Seteamos el HTML en tu campo (supongamos que se llama 'preview_html')
-                    console.log(`hola ${r.message}`);
                     frm.set_df_property('template', 'options', r.message);
                     frm.refresh_field('template');
                 }

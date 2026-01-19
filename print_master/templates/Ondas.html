@@ -2,7 +2,8 @@
     @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700;900&display=swap');
 
 .invoice-wrapper {
-    font-family: 'Montserrat', sans-serif;
+    /* Tipografía dinámica */
+    font-family: {{ config.typography or "'Montserrat', sans-serif" }};
     color: #333;
     position: relative;
     overflow: hidden;
@@ -10,12 +11,12 @@
     background: #fff;
 }
 
-/* Curvas de Diseño (Inspiradas en image_9d9ba2.jpg) */
+/* Curvas de Diseño */
 .curve-bg-top {
     position: absolute;
     top: -50px; right: -50px;
     width: 500px; height: 350px;
-    background: #1e4ea1;
+    background: {{ config.primary_color or '#1e4ea1' }};
     border-radius: 0 0 0 100%;
     z-index: 1;
 }
@@ -24,7 +25,7 @@
     position: absolute;
     top: -80px; right: -80px;
     width: 550px; height: 400px;
-    background: rgba(30, 78, 161, 0.1);
+    background: {{ config.secondary_color or 'rgba(30, 78, 161, 0.1)' }};
     border-radius: 0 0 0 100%;
     z-index: 0;
 }
@@ -33,7 +34,7 @@
     position: absolute;
     bottom: -100px; left: -100px;
     width: 600px; height: 300px;
-    background: #1e4ea1;
+    background: {{ config.primary_color or '#1e4ea1' }};
     border-radius: 0 100% 0 0;
     opacity: 0.9;
 }
@@ -57,7 +58,7 @@
 
 .brand-tagline {
     font-size: 10px;
-    color: #1e4ea1;
+    color: {{ config.primary_color or '#1e4ea1' }};
     font-weight: 700;
     letter-spacing: 2px;
 }
@@ -65,7 +66,7 @@
 .invoice-meta h1 {
     font-size: 50px;
     font-weight: 900;
-    color: #fff; /* Texto sobre la curva azul */
+    color: #fff; 
     margin: 0;
 }
 
@@ -80,8 +81,8 @@
 
 .contact-info h3 {
     font-size: 14px;
-    color: #1e4ea1;
-    border-bottom: 3px solid #1e4ea1;
+    color: {{ config.primary_color or '#1e4ea1' }};
+    border-bottom: 3px solid {{ config.primary_color or '#1e4ea1' }};
     display: inline-block;
     padding-right: 20px;
 }
@@ -92,7 +93,7 @@
 }
 
 .items-table th {
-    background: #1e4ea1;
+    background: {{ config.primary_color or '#1e4ea1' }};
     color: white;
     padding: 12px;
     font-size: 12px;
@@ -121,8 +122,8 @@
 .grand-total {
     font-size: 20px;
     font-weight: 900;
-    color: #1e4ea1;
-    border-top: 2px solid #1e4ea1;
+    color: {{ config.primary_color or '#1e4ea1' }};
+    border-top: 2px solid {{ config.primary_color or '#1e4ea1' }};
     margin-top: 10px;
     padding-top: 10px;
 }
@@ -135,7 +136,7 @@
     <div class="invoice-body">
         <header class="main-header">
             <div class="brand-side">
-                <img src="/private/files/Gemini_Generated_Image_amyizlamyizlamyi - Editado.png" class="main-logo">
+                <img src="{{ config.logo or '/private/files/Gemini_Generated_Image_amyizlamyizlamyi - Editado.png' }}" class="main-logo">
                 <div class="brand-tagline">Soluciones ERP & Desarrollo de Software</div>
             </div>
             <div class="invoice-meta">
